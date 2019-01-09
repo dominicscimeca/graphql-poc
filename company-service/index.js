@@ -22,15 +22,16 @@ const typeDefs = gql`
   # Comments in GraphQL are defined with the hash (#) symbol.
 
   # This "Book" type can be used in other type declarations.
-  type User {
-    favoriteBook: String
-    name: String
+  type Company {
+    id: ID
+    employeeCount: int
+    ceo: String
   }
 
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
   type Query {
-    user: [User]
+    companies: [Company]
   }
 `;
 
@@ -38,7 +39,7 @@ const typeDefs = gql`
 // schema.  We'll retrieve books from the "books" array above.
 const resolvers = {
     Query: {
-        users: () => users,
+        companies: () => companies,
     },
 };
 

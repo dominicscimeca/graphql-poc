@@ -2,6 +2,7 @@ type User {
     id: ID!
     favoriteBook: String!
     name: String!
+    other: String
 }
 
 # The "Query" type is the root of all GraphQL queries.

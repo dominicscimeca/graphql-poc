@@ -5,14 +5,18 @@ const { ApolloServer, gql } = require('apollo-server');
 // from an existing data source like a REST API or database.
 const users = [
     {
+        id: 45,
         favoriteBook: 'Harry Potter and the Chamber of Secrets',
         name: 'J.K. Rowling',
-        company: 10
+        company: 10,
+        other:"bbb"
     },
     {
+        id: 47,
         favoriteBook: 'Jurassic Park',
         name: 'Michael Crichton',
-        company: 20
+        company: 20,
+        other: "aaa"
     },
 ];
 
@@ -23,9 +27,11 @@ const typeDefs = gql`
 
   # This "Book" type can be used in other type declarations.
   type User {
+    id: ID
     favoriteBook: String
     name: String
     company: Int
+    other: String
   }
 
   # The "Query" type is the root of all GraphQL queries.

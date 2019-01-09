@@ -1,5 +1,7 @@
 import React from 'react';
-import {graphql, QueryRenderer} from 'react-relay';
+import {QueryRenderer} from 'react-relay';
+import graphql from 'babel-plugin-relay/macro';
+
 import environment from './relay-environment'
 
 export default class UsersRelay extends React.Component {
@@ -10,7 +12,8 @@ export default class UsersRelay extends React.Component {
                 query={graphql`
                   query UsersRelayQuery {
                     users {
-                      name
+                      favoriteBook
+                      other
                     }
                   }
                 `}
@@ -22,7 +25,7 @@ export default class UsersRelay extends React.Component {
                     if (!props) {
                         return <div>Loading...</div>;
                     }
-                    return <div>User ID: {props.users[0].name}</div>;
+                    return <div>User ID: {props.users[0].favoriteBook}, {props.users[0].other}</div>;
                 }}
             />
         );
