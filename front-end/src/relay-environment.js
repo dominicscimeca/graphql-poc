@@ -9,7 +9,7 @@ function fetchQuery(
     operation,
     variables,
 ) {
-    return fetch('http://localhost:4000/graphql', {
+    return fetch('http://localhost:1919/graphql', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',

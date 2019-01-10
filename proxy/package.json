@@ -5,15 +5,28 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node src/index.js"
+    "start": "nodemon --exec npm run babel-node -- src/index.js",
+    "babel-node": "babel-node"
   },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "dependencies": {
     "@workpop/graphql-proxy": "^2.4.0",
+    "apollo-link-http": "^1.5.9",
+    "apollo-server": "^2.3.1",
     "express": "^4.16.4",
     "graphql": "^14.0.2",
-    "lodash": "^4.17.11"
+    "graphql-tools": "^4.0.3",
+    "lodash": "^4.17.11",
+    "node-fetch": "^2.3.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.2.3",
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "nodemon": "^1.18.9"
   }
 }

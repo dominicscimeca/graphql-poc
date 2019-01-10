@@ -9,4 +9,11 @@ type User {
 # (A "Mutation" type will be covered later on.)
 type Query {
     users: [User]
+    companies: [Company]
+}
+
+type Company {
+    id: ID
+    employeeCount: Int
+    ceo: String
 }

@@ -24,7 +24,7 @@ const typeDefs = gql`
   # This "Book" type can be used in other type declarations.
   type Company {
     id: ID
-    employeeCount: int
+    employeeCount: Int
     ceo: String
   }
 
@@ -50,6 +50,6 @@ const server = new ApolloServer({ typeDefs, resolvers });
 
 // This `listen` method launches a web-server.  Existing apps
 // can utilize middleware options, which we'll discuss later.
-server.listen().then(({ url }) => {
+server.listen({port: 5000}).then(({ url }) => {
     console.log(`🚀  Server ready at ${url}`);
 });
