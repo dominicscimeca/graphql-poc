@@ -1,20 +1,19 @@
 import { ApolloServer } from 'apollo-server'
-import { mergeSchemas } from 'graphql-tools';
-import userServiceSchema from './userServiceSchema';
-import companyServiceSchema from './companyServiceSchema';
+import {mergeSchemas} from "graphql-tools";
 
-
+import getRemoteSchemas from './remoteSchemas';
+import carsSchema from './carsSchema'
 
 const getSchema = async () => {
-    const userService = await userServiceSchema();
-    const companyService = await companyServiceSchema();
+    const remoteSchemas = await getRemoteSchemas([
+        'http://localhost:4000',
+        'http://localhost:5000'
+    ]);
 
-    return mergeSchemas({
-        schemas: [
-            userService,
-            companyService,
-        ],
-    });
+    return mergeSchemas({schemas:[
+        remoteSchemas,
+        carsSchema
+    ]})
 };
 
 const app = async () => {

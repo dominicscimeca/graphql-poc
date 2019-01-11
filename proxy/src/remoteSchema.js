@@ -3,15 +3,13 @@ import fetch from 'node-fetch';
 import { introspectSchema, makeRemoteExecutableSchema } from 'graphql-tools';
 
 
-const link = new HttpLink({ uri: 'http://localhost:4000', fetch });
+export default async (uri) => {
+    const link = new HttpLink({ uri, fetch });
 
-export default async () => {
     const schema = await introspectSchema(link);
 
-    const executableSchema = makeRemoteExecutableSchema({
+    return makeRemoteExecutableSchema({
         schema,
         link,
     });
-
-    return executableSchema
 }
