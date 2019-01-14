@@ -1,7 +1,7 @@
 import React from "react";
 import client from './ApolloClient';
 import gql from "graphql-tag";
-import {ApolloProvider, Query} from "react-apollo";
+import {Query} from "react-apollo";
 
 const GET_CARS = gql`
 {
@@ -13,7 +13,7 @@ const GET_CARS = gql`
 `;
 
 const Cars = () => (
-<Query query={GET_CARS}>
+<Query query={GET_CARS} client={client}>
     {({ loading, error, data }) => {
         if (loading) return "Loading...";
         if (error) return `Error! ${error.message}`;
@@ -27,8 +27,4 @@ const Cars = () => (
 </Query>
 );
 
-export default () => (
-    <ApolloProvider client={client}>
-        <Cars/>
-    </ApolloProvider>
-);
+export default Cars
