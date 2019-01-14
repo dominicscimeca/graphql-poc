@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import './App.css';
 import UsersRelay from './UsersRelay'
 import CompaniesRelay from './CompaniesRelay'
+import CarsApollo from './CarsApollo'
 
 class App extends Component {
   render() {
@@ -24,6 +25,7 @@ class App extends Component {
         </header>
         <UsersRelay/>
         <CompaniesRelay/>
+        <CarsApollo/>
       </div>
     );
   }
