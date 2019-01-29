@@ -52,7 +52,18 @@ const resolvers = {
 // In the most basic sense, the ApolloServer can be started
 // by passing type definitions (typeDefs) and the resolvers
 // responsible for fetching the data for those types.
-const server = new ApolloServer({ typeDefs, resolvers });
+const server = new ApolloServer({ typeDefs, resolvers, context: ({ req }) => {
+        // get the user token from the headers
+        const token = req.headers.authorization || '';
+
+        console.log("token", token);
+
+        // try to retrieve a user with the token
+        const user = {};
+
+        // add the user to the context
+        return { user };
+    } });
 
 // This `listen` method launches a web-server.  Existing apps
 // can utilize middleware options, which we'll discuss later.

@@ -18,7 +18,14 @@ const getSchema = async () => {
 
 const app = async () => {
     const schema = await getSchema();
-    const server = new ApolloServer({ schema });
+    const server = new ApolloServer({
+            schema,
+            context: ({req}) => {
+                return {
+                    headers: req.headers
+                };
+            }
+        });
 
     // normal ApolloServer listen call but url will contain /graphql
     server.listen({port: 1919}).then(({ url }) => {
